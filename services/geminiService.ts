@@ -66,7 +66,7 @@ const analysisSchema = {
 export const analyzeChart = async (images: { base64: string; mimeType: string }[], niftyPrice: string): Promise<TradingAnalysis> => {
   const apiKey = process.env.API_KEY;
   if (!apiKey) {
-    throw new Error("API_KEY is not available. Please select an API key.");
+    throw new Error("API_KEY is not configured. Please set it as an environment variable in your deployment settings.");
   }
   const ai = new GoogleGenAI({ apiKey });
 

@@ -63,17 +63,3 @@ export interface AppConfig {
   title: string;
   subtitle: string;
 }
-
-// FIX: Moved the AIStudio interface into the `declare global` block to resolve conflicts with other global declarations of `window.aistudio`.
-// Exporting the interface from the module was causing type mismatches.
-declare global {
-  interface AIStudio {
-    hasSelectedApiKey: () => Promise<boolean>;
-    openSelectKey: () => Promise<void>;
-  }
-
-  interface Window {
-    // FIX: Made 'aistudio' optional to resolve modifier conflicts with another global declaration.
-    aistudio?: AIStudio;
-  }
-}
